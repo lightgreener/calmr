@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    # TODO see Trello
   end
 
   # POST /users
