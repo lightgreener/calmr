@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-    root :to => 'session#new'
+  
+    root :to => 'pages#new'
 
      # Session routes to allow login and logout
-     post '/login', to: 'sessions#create'
-     delete '/logout', to: 'sessions#destroy'
-     get '/logged_in', to: 'sessions#is_logged_in?'
+     get '/login', to: 'session#new'
+     post '/login', to: 'session#create'
+     delete '/login', to: 'session#destroy'
 
     resources :users
     resources :articles

@@ -1,0 +1,6 @@
+<h1>  Articles </h1>
+    <% @articles.each do |article| %>
+        <p><%= link_to article.name, new_article_path %></p>
+    <% end %>
+
+<h1>  comments </h1>
