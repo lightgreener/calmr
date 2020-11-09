@@ -1,10 +1,11 @@
 class SessionController < ApplicationController
     before_action :check_for_admin, :only => [:index]
   def new
+      @user = User.new
   end
 
   def index
-      
+      @users =User.all
   end
 
   def create
@@ -21,7 +22,6 @@ class SessionController < ApplicationController
       # save the user in the session
       session[:user_id] = user.id
       redirect_to articles_path
-      #
       else
           flash[:error] = "Invalid username or password"
           redirect_to login_path #display error message
