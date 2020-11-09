@@ -1,6 +1,15 @@
-<div class="">
-    <p><%= @article.link  %></p>
-        <% if @article.comments.present? %>
-            <p> <%= @comment   %></p>
-        <% end %>
-</div>
+
+
+<form action="<%= articles_path %>" method="post">
+  <label>
+    Name:
+    <input name="name" required>
+  </label>
+
+  <label>
+    link:
+    <input type="url" name="link">
+  </label>
+
+  <button>Create Article</button>
+</form>

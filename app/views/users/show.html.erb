@@ -1,1 +1,39 @@
-<h1>show page</h1>
+<h2> Welcome <%= @user.email %></h2>
+
+<%= image_tag @user.image if @user.image.present? %>
+<ul>
+  <li>Name: <%= link_to @user.email %></li>
+  <% if @article.present? %>
+    <li>article :<%= @ariticle.name %></li>
+
+  <% @comment.each do |c| %>
+  <%= c.label :content %>
+  <%= c.text_field :content %>
+  <% end %>
+
+  <% end %>
+</ul>
+
+
+
+<!--  create part -->
+<form action="<%= articles_path %>" method="post">
+  <label>
+    Name:
+    <input name="name" required>
+  </label>
+
+  <label>
+    Link:
+    <input type="url" name="link">
+  </label>
+
+  <button>Create Article</button>
+</form>
+
+
+
+<div class="controls">
+  <%= link_to "Edit", edit_user_path(@user) %>
+  <%= link_to "Delete", @user, :method => 'delete', :data => { :confirm => 'Are you sure?' } %>
+</div>
