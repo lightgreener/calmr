@@ -23,19 +23,12 @@ class CommentsController < ApplicationController
     def create
       @comment = Comment.new(comment_params)
 
-      respond_to do |format|
-        if @comment.save
-          format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-          format.json { render :show, status: :created, location: @comment }
-        else
-          format.html { render :new }
-          format.json { render json: @comment.errors, status: :unprocessable_entity }
-        end
+      if @comment.save
+          render :json => @comment
+      else
+          render :json => @comment.errors
       end
     end
-
-
-
 
     # def update
     #   comment = Comment.find params[:id]
@@ -46,14 +39,10 @@ class CommentsController < ApplicationController
     # PATCH/PUT /users/1
     # PATCH/PUT /users/1.json
     def update
-      respond_to do |format|
         if @comment.update(comment_params)
-          format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-          format.json { render :show, status: :ok, location: @comment }
+            render :json => @comment
         else
-          format.html { render :edit }
-          format.json { render json: @comment.errors, status: :unprocessable_entity }
-        end
+          render :json => @comment.errors
       end
     end
 
@@ -64,18 +53,12 @@ class CommentsController < ApplicationController
     # end
 
     def destroy
-      @user.destroy
-      respond_to do |format|
-        format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      @comment.destroy
+      render :json => @comment
     end
 
     private
       # Use callbacks to share common setup or constraints between actions.
-      def set_comment
-        @comment = Comment.find(params[:id])
-      end
 
       # Only allow a list of trusted parameters through.
       def comment_params
