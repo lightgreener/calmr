@@ -5,12 +5,32 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-  end
+    if @users
+      render json: {
+        users: @users
+      }
+    else
+      render json: {
+        status: 500,
+        errors: ['no users found']
+      }
+    end
+end
 
   # GET /users/1
   # GET /users/1.json
   def show
-      @user =User.find params[:id]
+    @user = User.find(params[:id])
+   if @user
+      render json: {
+        user: @user
+      }
+    else
+      render json: {
+        status: 500,
+        errors: ['user not found']
+      }
+    end
   end
 
   # GET /users/new
@@ -27,16 +47,31 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
+  # def create
+  #   @user = User.new(user_params)
+  #
+  #     if @user.save
+  #         render :json => @user
+  #     else
+  #         render :json => @user.errors
+  #     end
+  # end
+
   def create
-    @user = User.new(user_params)
-
+      @user = User.new(user_params)
       if @user.save
-          render :json => @user
+        login!
+        render json: {
+          status: :created,
+          user: @user
+        }
       else
-          render :json => @user.errors
+        render json: {
+          status: 500,
+          errors: @user.errors.full_messages
+        }
       end
-  end
-
+    end
 
   def update
       if @user.update(user_params)
