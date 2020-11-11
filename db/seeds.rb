@@ -13,5 +13,15 @@ puts "#{ Article.count } articles"
 
 Comment.destroy_all
 c1 = Comment.create :content => 'first content'
-c1 = Comment.create :content => 'second content'
+c2 = Comment.create :content => 'second content'
 puts "#{ Comment.count } comments"
+
+puts "users and articles"
+u1.articles << a1 << a2
+u2.articles << a1 << a2
+u3.articles << a1 << a2
+u4.articles << a1
+
+puts "aricles and comments"
+a1.comments <<c1 <<c2
+a2.comments <<c2
