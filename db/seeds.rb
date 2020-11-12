@@ -7,7 +7,7 @@ u5 = User.create :email => 'bob@ga.com', :name => 'Bob',:password => 'chicken'
 puts "#{ User.count } users"
 
 Article.destroy_all
-a1 = Article.create :link => 'https://www.forbes.com/sites/ericmack/2020/03/23/now-is-the-perfect-time-to-start-meditating-and-science-proves-it/?sh=32cb129469a3', :name => 'Now Is The Perfect Time To Start Meditating, And Science Proves It'
+a1 = Article.create :link => 'https://youtu.be/inpok4MKVLM', :name => '5-Minute Meditation You Can Do Anywhere'
 a2 = Article.create :link => 'https://www.nytimes.com/2020/11/02/well/mind/election-anxiety-stress-relief-calm.html', :name => 'Peak Anxiety? Here Are 10 Ways to Calm Down'
 puts "#{ Article.count } articles"
 

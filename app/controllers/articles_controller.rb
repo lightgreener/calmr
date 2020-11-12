@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
     def new
       @article = Article.new
+      raise 'hell'
     end
 
     def edit
