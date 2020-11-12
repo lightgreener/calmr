@@ -12,6 +12,16 @@ a2 = Article.create :link => 'https://www.nytimes.com/2020/11/02/well/mind/elect
 puts "#{ Article.count } articles"
 
 Comment.destroy_all
-c1 = Comment.create :content => 'first content'
-c1 = Comment.create :content => 'second content'
+c1 = Comment.create :content => 'first comment'
+c2 = Comment.create :content => 'second comment'
 puts "#{ Comment.count } comments"
+
+puts "users and articles"
+u1.articles << a1 << a2
+u2.articles << a1 << a2
+u3.articles << a1 << a2
+u4.articles << a1
+
+puts "articles and comments"
+a1.comments << c1
+a2.comments << c2
